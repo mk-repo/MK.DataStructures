@@ -1,6 +1,7 @@
 ﻿using MK.DataStructures.Implementations;
 using MK.DataStructures.Implementations.List;
 using System;
+using System.Linq;
 
 namespace MK.DataStructures.Client
 {
@@ -30,9 +31,19 @@ namespace MK.DataStructures.Client
             _program.AddLastItemToList(_linkedList, _node3);
 
             _program.AddFirstItemToList(_linkedList, _node4);
+
+            _program.PrintListItems(_linkedList);
+
+            _program.RemoveFirstItemFromList(_linkedList);
+
+            _program.PrintListItems(_linkedList);
+
+            _program.RemoveLastItemFromList(_linkedList);
+
+            _program.PrintListItems(_linkedList);
         }
 
-        void PrintNodeChain<T>(Node<T> node)
+        void PrintNodeChain<T>(INode<T> node)
         {
             if (node == null) return;
 
@@ -40,18 +51,42 @@ namespace MK.DataStructures.Client
             PrintNodeChain(node.Next);
         }
 
-        void AddFirstItemToList<T>(ILinkedList<T> linkedList, Node<T> node)
+        void AddFirstItemToList<T>(ILinkedList<T> linkedList, INode<T> node)
         {
             linkedList.AddToFront(node);
 
             Console.WriteLine("List Length :" + linkedList.Count());
         }
 
-        void AddLastItemToList<T>(ILinkedList<T> linkedList, Node<T> node)
+        void AddLastItemToList<T>(ILinkedList<T> linkedList, INode<T> node)
         {
             linkedList.AddToEnd(node);
 
             Console.WriteLine("List Length :" + linkedList.Count());
+        }
+
+        void RemoveFirstItemFromList<T>(ILinkedList<T> linkedList)
+        {
+            linkedList.RemoveFromFront();
+            Console.WriteLine("List Length :" + linkedList.Count());
+            Console.WriteLine("First Node:" + linkedList.Head.Data);
+            Console.WriteLine("Last Node:" + linkedList.Tail.Data);
+        }
+
+        void RemoveLastItemFromList<T>(ILinkedList<T> linkedList)
+        {
+            linkedList.RemoveFromEnd();
+            Console.WriteLine("List Length :" + linkedList.Count());
+            Console.WriteLine("First Node:" + linkedList.Head.Data);
+            Console.WriteLine("Last Node:" + linkedList.Tail.Data);
+        }
+
+        void PrintListItems<T>(ILinkedList<T> linkedList)
+        {
+            linkedList.Enumerate().ToList().ForEach(node =>
+            {
+                Console.WriteLine(node);
+            });
         }
     }
 }

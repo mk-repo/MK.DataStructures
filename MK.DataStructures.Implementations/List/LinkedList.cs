@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace MK.DataStructures.Implementations.List
 {
     public class LinkedList<T> : ILinkedList<T>
     {
-        public Node<T> Head { get; set; }
+        public INode<T> Head { get; set; }
 
-        public Node<T> Tail { get; set; }
+        public INode<T> Tail { get; set; }
 
         public LinkedList()
         {
@@ -21,7 +21,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddToFront(Node<T> node)
+        public ILinkedList<T> AddToFront(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -42,7 +42,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddToEnd(Node<T> node)
+        public ILinkedList<T> AddToEnd(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -60,29 +60,96 @@ namespace MK.DataStructures.Implementations.List
             return this;
         }
 
-        public ILinkedList<T> Add(Node<T> node, int position)
+        public ILinkedList<T> Add(INode<T> node, int position)
         {
             throw new NotImplementedException();
         }
 
-        public ILinkedList<T> RemoveFromFront(Node<T> node)
+        /// <summary>
+        /// Removes first item from the list
+        /// </summary>
+        /// <returns></returns>
+        public ILinkedList<T> RemoveFromFront()
+        {
+            if (this.Count() == 0)
+                return null;
+
+            var nextHeadNode = this.Head.Next;
+
+            //If list contains only one node
+            if(nextHeadNode == null)
+            {
+                this.Head = null;
+                this.Tail = null;
+            }
+            else
+            {
+                this.Head = this.Head.Next;
+            }
+            return this;
+        }
+
+        /// <summary>
+        /// Removes Last item from the list
+        /// </summary>
+        /// <returns></returns>
+        public ILinkedList<T> RemoveFromEnd()
+        {
+            var listCount = this.Count();
+            if (listCount == 0)
+                return null;
+
+            var lastButOneNode = this.getNode(listCount - 1);
+            lastButOneNode.Next = null;
+            this.Tail = lastButOneNode;
+
+            return this;
+        }
+
+        public ILinkedList<T> Remove(int position)
         {
             throw new NotImplementedException();
         }
 
-        public ILinkedList<T> RemoveFromEnd(Node<T> node)
+        /// <summary>
+        /// Returns all the nodes in the list
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<T> Enumerate()
         {
-            throw new NotImplementedException();
+            var node = this.Head;
+            while (node != null)
+            {
+                yield return node.Data;
+                node = node.Next;
+            }
         }
 
-        public ILinkedList<T> Remove(Node<T> node, int position)
+        /// <summary>
+        /// Gets node based on the position
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        private INode<T> getNode(int position)
         {
-            throw new NotImplementedException();
-        }
+            //If invalid position is provided
+            if (position < 0 || position > this.Count())
+                return null;
 
-        public ILinkedList<T> Enumerate()
-        {
-            throw new NotImplementedException();
+            var node = this.Head;
+            var count = 0;
+            INode<T> selectedNode = null;
+
+            while (node != null)
+            {
+                count++;
+                if (count == position)
+                {
+                    selectedNode = node;
+                }
+                node = node.Next;
+            }
+            return selectedNode;
         }
     }
 }

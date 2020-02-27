@@ -6,23 +6,23 @@ namespace MK.DataStructures.Implementations.List
 {
     public interface ILinkedList<T>
     {
-        Node<T> Head { get; set; }
+        INode<T> Head { get; set; }
 
-        Node<T> Tail { get; set; }
+        INode<T> Tail { get; set; }
 
-        ILinkedList<T> AddToFront(Node<T> node);
+        ILinkedList<T> AddToFront(INode<T> node);
 
-        ILinkedList<T> AddToEnd(Node<T> node);
+        ILinkedList<T> AddToEnd(INode<T> node);
 
-        ILinkedList<T> Add(Node<T> node, int position);
+        ILinkedList<T> Add(INode<T> node, int position);
 
-        ILinkedList<T> RemoveFromFront(Node<T> node);
+        ILinkedList<T> RemoveFromFront();
 
-        ILinkedList<T> RemoveFromEnd(Node<T> node);
+        ILinkedList<T> RemoveFromEnd();
 
-        ILinkedList<T> Remove(Node<T> node, int position);
+        ILinkedList<T> Remove(int position);
 
-        ILinkedList<T> Enumerate();
+        IEnumerable<T> Enumerate();
 
     }
 }
