@@ -60,9 +60,61 @@ namespace MK.DataStructures.Implementations.List
             return this;
         }
 
+        /// <summary>
+        /// Add's item to list at a given position
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public ILinkedList<T> Add(INode<T> node, int position)
         {
-            throw new NotImplementedException();
+            if (node == null) return null;
+
+            var listLength = this.Count();
+            var count = 0;
+            //If invalid position is provided
+            //Count + 1: This is the case to add item at the end of the list
+            if (position < 0 || position > listLength)
+                return null;
+
+            var item = this.Head;
+            INode<T> previousNode = null;
+
+            //Adding an item when list is empty
+            if (item == null)
+            {
+                this.Head = node;
+                this.Tail = node;
+            }
+
+            //Add at the top of the list
+            if (position == 1)
+            {
+                return this.AddToFront(node);
+            }
+            //Add at the end of the list
+            else if (position == listLength)
+            {
+                return this.AddToEnd(node);
+            }
+            else
+            {
+                while (count < listLength)
+                {
+                    count++;
+                    if (count + 1 == position)
+                    {
+                        previousNode = item;
+                    }
+                    item = item?.Next;
+                }
+
+                var temp = previousNode.Next;
+                previousNode.Next = node;
+                node.Next = temp;
+
+                return this;
+            }
         }
 
         /// <summary>
@@ -77,7 +129,7 @@ namespace MK.DataStructures.Implementations.List
             var nextHeadNode = this.Head.Next;
 
             //If list contains only one node
-            if(nextHeadNode == null)
+            if (nextHeadNode == null)
             {
                 this.Head = null;
                 this.Tail = null;
@@ -106,9 +158,40 @@ namespace MK.DataStructures.Implementations.List
             return this;
         }
 
+        /// <summary>
+        /// Removes item from list based on position provided
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public ILinkedList<T> Remove(int position)
         {
-            throw new NotImplementedException();
+            //If invalid position is provided
+            if (position < 0 || position > this.Count())
+                return null;
+
+            var node = this.Head;
+            var count = 0;
+            INode<T> previousNode = null;
+            INode<T> nextNode = null;
+
+            while (node != null && count <= position + 1)
+            {
+                count++;
+                //To identify previous node to the positioned node
+                if (count + 1 == position)
+                {
+                    previousNode = node;
+                }
+                //To identify next node to the positioned node
+                else if (count - 1 == position)
+                {
+                    nextNode = node;
+                }
+                node = node.Next;
+            }
+
+            previousNode.Next = nextNode;
+            return this;
         }
 
         /// <summary>
@@ -146,6 +229,7 @@ namespace MK.DataStructures.Implementations.List
                 if (count == position)
                 {
                     selectedNode = node;
+                    break;
                 }
                 node = node.Next;
             }

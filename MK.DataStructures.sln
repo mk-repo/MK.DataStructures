@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.DataStructures.Client", "MK.DataStructures.Client\MK.DataStructures.Client.csproj", "{60A3F9D2-99E0-4AAE-AA2F-4F634A25049E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK.DataStructures.Client", "MK.DataStructures.Client\MK.DataStructures.Client.csproj", "{60A3F9D2-99E0-4AAE-AA2F-4F634A25049E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.DataStructures.Implementations", "MK.DataStructures.Implementations\MK.DataStructures.Implementations.csproj", "{CECAF91A-D1D5-48A6-9117-A8F33F3B0B5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MK.DataStructures.Implementations", "MK.DataStructures.Implementations\MK.DataStructures.Implementations.csproj", "{CECAF91A-D1D5-48A6-9117-A8F33F3B0B5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MK.DataStructures.Implementations.Test", "MK.DataStructures.Implementations.Test\MK.DataStructures.Implementations.Test.csproj", "{8C6B283A-A474-4626-8AF7-116677A2611D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CECAF91A-D1D5-48A6-9117-A8F33F3B0B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CECAF91A-D1D5-48A6-9117-A8F33F3B0B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CECAF91A-D1D5-48A6-9117-A8F33F3B0B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C6B283A-A474-4626-8AF7-116677A2611D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C6B283A-A474-4626-8AF7-116677A2611D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C6B283A-A474-4626-8AF7-116677A2611D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C6B283A-A474-4626-8AF7-116677A2611D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

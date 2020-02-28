@@ -34,13 +34,27 @@ namespace MK.DataStructures.Client
 
             _program.PrintListItems(_linkedList);
 
+            Console.WriteLine("Removing First Item From List");
             _program.RemoveFirstItemFromList(_linkedList);
 
             _program.PrintListItems(_linkedList);
 
+            Console.WriteLine("Removing Last Item From List");
             _program.RemoveLastItemFromList(_linkedList);
 
             _program.PrintListItems(_linkedList);
+
+            Console.WriteLine("Removing item base on position. Position: 2");
+            _program.RemoveItemFromList(_linkedList, 2);
+
+            _program.PrintListItems(_linkedList);
+
+            Console.WriteLine("Adding item base on position. Position: 2");
+            var _node5 = new Node<int>() { Data = 25, Next = null };
+            _program.AddItemsToList(_linkedList, _node5, 2);
+
+            _program.PrintListItems(_linkedList);
+
         }
 
         void PrintNodeChain<T>(INode<T> node)
@@ -65,6 +79,14 @@ namespace MK.DataStructures.Client
             Console.WriteLine("List Length :" + linkedList.Count());
         }
 
+        void AddItemsToList<T>(ILinkedList<T> linkedList, INode<T> node, int position)
+        {
+            linkedList.Add(node, position);
+            Console.WriteLine("List Length :" + linkedList.Count());
+            Console.WriteLine("First Node:" + linkedList.Head.Data);
+            Console.WriteLine("Last Node:" + linkedList.Tail.Data);
+        }
+
         void RemoveFirstItemFromList<T>(ILinkedList<T> linkedList)
         {
             linkedList.RemoveFromFront();
@@ -76,6 +98,14 @@ namespace MK.DataStructures.Client
         void RemoveLastItemFromList<T>(ILinkedList<T> linkedList)
         {
             linkedList.RemoveFromEnd();
+            Console.WriteLine("List Length :" + linkedList.Count());
+            Console.WriteLine("First Node:" + linkedList.Head.Data);
+            Console.WriteLine("Last Node:" + linkedList.Tail.Data);
+        }
+
+        void RemoveItemFromList<T>(ILinkedList<T> linkedList, int position)
+        {
+            linkedList.Remove(position);
             Console.WriteLine("List Length :" + linkedList.Count());
             Console.WriteLine("First Node:" + linkedList.Head.Data);
             Console.WriteLine("Last Node:" + linkedList.Tail.Data);
