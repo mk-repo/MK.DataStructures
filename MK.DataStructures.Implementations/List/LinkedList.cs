@@ -12,8 +12,7 @@ namespace MK.DataStructures.Implementations.List
 
         public LinkedList()
         {
-            this.Head = null;
-            this.Tail = null;
+
         }
 
         /// <summary>
@@ -26,13 +25,13 @@ namespace MK.DataStructures.Implementations.List
             if (node == null)
                 return this;
 
-            var _temp = this.Head;
-            this.Head = node;
-            this.Head.Next = _temp;
+            var _temp = Head;
+            Head = node;
+            Head.Next = _temp;
 
             if (this.Count() == 1)
             {
-                this.Tail = this.Head;
+                Tail = Head;
             }
             return this;
         }
@@ -49,13 +48,13 @@ namespace MK.DataStructures.Implementations.List
 
             if (this.Count() == 0)
             {
-                this.Head = node;
-                this.Tail = node;
+                Head = node;
+                Tail = node;
             }
             else
             {
-                this.Tail.Next = node;
-                this.Tail = node;
+                Tail.Next = node;
+                Tail = node;
             }
             return this;
         }
@@ -77,14 +76,14 @@ namespace MK.DataStructures.Implementations.List
             if (position < 0 || position > listLength)
                 return null;
 
-            var item = this.Head;
+            var item = Head;
             INode<T> previousNode = null;
 
             //Adding an item when list is empty
             if (item == null)
             {
-                this.Head = node;
-                this.Tail = node;
+                Head = node;
+                Tail = node;
             }
 
             //Add at the top of the list
@@ -95,7 +94,7 @@ namespace MK.DataStructures.Implementations.List
             //Add at the end of the list
             else if (position == listLength)
             {
-                return this.AddLast(node);
+                return AddLast(node);
             }
             else
             {
@@ -126,17 +125,15 @@ namespace MK.DataStructures.Implementations.List
             if (this.Count() == 0)
                 return null;
 
-            var nextHeadNode = this.Head.Next;
-
             //If list contains only one node
-            if (nextHeadNode == null)
+            if (Head.Next == null)
             {
-                this.Head = null;
-                this.Tail = null;
+                Head = null;
+                Tail = null;
             }
             else
             {
-                this.Head = this.Head.Next;
+                Head = Head.Next;
             }
             return this;
         }
