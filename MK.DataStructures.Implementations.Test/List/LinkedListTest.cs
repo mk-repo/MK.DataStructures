@@ -38,5 +38,91 @@ namespace MK.DataStructures.Implementations.Test
             Assert.AreEqual(linkedList.Head.Data, 5);
             Assert.AreEqual(linkedList.Tail.Data, 5);
         }
+
+        [TestMethod]
+        public void Assert_Count_Add_To_Front_String()
+        {
+            var linkedList = new LinkedList<string>();
+            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+
+            linkedList.AddFirst(_node);
+
+            Assert.AreEqual(linkedList.Count(), 1);
+        }
+
+        [TestMethod]
+        public void Assert_Data_Add_To_Front_String()
+        {
+            var linkedList = new LinkedList<string>();
+            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+
+            linkedList.AddFirst(_node);
+
+            Assert.AreEqual(linkedList.Head.Data, "Test_Data");
+            Assert.AreEqual(linkedList.Tail.Data, "Test_Data");
+        }
+
+        [TestMethod]
+        public void Assert_Count_Add_To_End_Integer()
+        {
+            var linkedList = new LinkedList<int>();
+            var _node = new Node<int>() { Data = 5, Next = null };
+
+            linkedList.AddLast(_node);
+
+            Assert.AreEqual(linkedList.Count(), 1);
+        }
+
+        [TestMethod]
+        public void Assert_Data_Add_To_End_Integer()
+        {
+            var linkedList = new LinkedList<int>();
+            var _node = new Node<int>() { Data = 5, Next = null };
+
+            linkedList.AddLast(_node);
+
+            Assert.AreEqual(linkedList.Head.Data, 5);
+            Assert.AreEqual(linkedList.Tail.Data, 5);
+        }
+
+        [TestMethod]
+        public void Assert_Count_Add_To_End_String()
+        {
+            var linkedList = new LinkedList<string>();
+            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+
+            linkedList.AddLast(_node);
+
+            Assert.AreEqual(linkedList.Count(), 1);
+        }
+
+        [TestMethod]
+        public void Assert_Data_Add_To_End_String()
+        {
+            var linkedList = new LinkedList<string>();
+            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+
+            linkedList.AddLast(_node);
+
+            Assert.AreEqual(linkedList.Head.Data, "Test_Data");
+            Assert.AreEqual(linkedList.Tail.Data, "Test_Data");
+        }
+
+        [TestMethod]
+        public void Assert_Clear_List()
+        {
+            var linkedList = new LinkedList<int>();
+            var _node = new Node<int>() { Data = 1, Next = null };
+            var _node1 = new Node<int>() { Data = 2, Next = null };
+
+            linkedList.AddFirst(_node);
+            linkedList.AddFirst(_node1);
+
+            linkedList.Clear();
+
+            Assert.IsNull(linkedList.Head);
+            Assert.IsNull(linkedList.Tail);
+            Assert.AreEqual(linkedList.Count(), 0);
+        }
     }
 }

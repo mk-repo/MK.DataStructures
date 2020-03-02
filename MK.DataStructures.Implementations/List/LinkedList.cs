@@ -6,9 +6,9 @@ namespace MK.DataStructures.Implementations.List
 {
     public class LinkedList<T> : ILinkedList<T>
     {
-        public INode<T> Head { get; set; }
+        public INode<T> Head { get; private set; }
 
-        public INode<T> Tail { get; set; }
+        public INode<T> Tail { get; private set; }
 
         public LinkedList()
         {
@@ -203,6 +203,15 @@ namespace MK.DataStructures.Implementations.List
                 yield return node.Data;
                 node = node.Next;
             }
+        }
+
+        /// <summary>
+        /// Clears Linked List
+        /// </summary>
+        public void Clear()
+        {
+            this.Head = null;
+            this.Tail = null;
         }
 
         /// <summary>
