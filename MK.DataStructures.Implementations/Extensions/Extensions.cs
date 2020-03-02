@@ -1,5 +1,7 @@
 ﻿
-namespace MK.DataStructures.Implementations.List
+using MK.DataStructures.Implementations.List;
+
+namespace MK.DataStructures.Implementations
 {
     public static class Extensions
     {
