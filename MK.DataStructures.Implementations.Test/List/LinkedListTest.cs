@@ -22,7 +22,7 @@ namespace MK.DataStructures.Implementations.Test
             var linkedList = new LinkedList<int>();
             var _node = new Node<int>() { Data = 5, Next = null };
 
-            linkedList.AddToFront(_node);
+            linkedList.AddFirst(_node);
 
             Assert.AreEqual(linkedList.Count(), 1);
         }
@@ -33,7 +33,7 @@ namespace MK.DataStructures.Implementations.Test
             var linkedList = new LinkedList<int>();
             var _node = new Node<int>() { Data = 5, Next = null };
 
-            linkedList.AddToFront(_node);
+            linkedList.AddFirst(_node);
 
             Assert.AreEqual(linkedList.Head.Data, 5);
             Assert.AreEqual(linkedList.Tail.Data, 5);

@@ -67,14 +67,14 @@ namespace MK.DataStructures.Client
 
         void AddFirstItemToList<T>(ILinkedList<T> linkedList, INode<T> node)
         {
-            linkedList.AddToFront(node);
+            linkedList.AddFirst(node);
 
             Console.WriteLine("List Length :" + linkedList.Count());
         }
 
         void AddLastItemToList<T>(ILinkedList<T> linkedList, INode<T> node)
         {
-            linkedList.AddToEnd(node);
+            linkedList.AddLast(node);
 
             Console.WriteLine("List Length :" + linkedList.Count());
         }
@@ -89,7 +89,7 @@ namespace MK.DataStructures.Client
 
         void RemoveFirstItemFromList<T>(ILinkedList<T> linkedList)
         {
-            linkedList.RemoveFromFront();
+            linkedList.RemoveFirst();
             Console.WriteLine("List Length :" + linkedList.Count());
             Console.WriteLine("First Node:" + linkedList.Head.Data);
             Console.WriteLine("Last Node:" + linkedList.Tail.Data);
@@ -97,7 +97,7 @@ namespace MK.DataStructures.Client
 
         void RemoveLastItemFromList<T>(ILinkedList<T> linkedList)
         {
-            linkedList.RemoveFromEnd();
+            linkedList.RemoveLast();
             Console.WriteLine("List Length :" + linkedList.Count());
             Console.WriteLine("First Node:" + linkedList.Head.Data);
             Console.WriteLine("Last Node:" + linkedList.Tail.Data);

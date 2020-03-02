@@ -4,7 +4,24 @@ using System.Text;
 
 namespace MK.DataStructures.Implementations.DoublyLinkedList
 {
-    public interface IDoublyLinkedList
+    public interface IDoublyLinkedList<T>
     {
+        INode<T> Head { get; set; }
+
+        INode<T> Tail { get; set; }
+
+        IDoublyLinkedList<T> AddFirst(INode<T> node);
+
+        IDoublyLinkedList<T> AddLast(INode<T> node);
+
+        IDoublyLinkedList<T> Add(INode<T> node, int position);
+
+        IDoublyLinkedList<T> RemoveFirst();
+
+        IDoublyLinkedList<T> RemoveLast();
+
+        IDoublyLinkedList<T> Remove(int position);
+
+        IEnumerable<T> Enumerate();
     }
 }

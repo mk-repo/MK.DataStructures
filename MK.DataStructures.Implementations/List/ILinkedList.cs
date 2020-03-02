@@ -10,15 +10,15 @@ namespace MK.DataStructures.Implementations.List
 
         INode<T> Tail { get; set; }
 
-        ILinkedList<T> AddToFront(INode<T> node);
+        ILinkedList<T> AddFirst(INode<T> node);
 
-        ILinkedList<T> AddToEnd(INode<T> node);
+        ILinkedList<T> AddLast(INode<T> node);
 
         ILinkedList<T> Add(INode<T> node, int position);
 
-        ILinkedList<T> RemoveFromFront();
+        ILinkedList<T> RemoveFirst();
 
-        ILinkedList<T> RemoveFromEnd();
+        ILinkedList<T> RemoveLast();
 
         ILinkedList<T> Remove(int position);
 

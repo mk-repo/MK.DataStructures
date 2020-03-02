@@ -21,7 +21,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddToFront(INode<T> node)
+        public ILinkedList<T> AddFirst(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -42,7 +42,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddToEnd(INode<T> node)
+        public ILinkedList<T> AddLast(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -90,12 +90,12 @@ namespace MK.DataStructures.Implementations.List
             //Add at the top of the list
             if (position == 1)
             {
-                return this.AddToFront(node);
+                return this.AddFirst(node);
             }
             //Add at the end of the list
             else if (position == listLength)
             {
-                return this.AddToEnd(node);
+                return this.AddLast(node);
             }
             else
             {
@@ -121,7 +121,7 @@ namespace MK.DataStructures.Implementations.List
         /// Removes first item from the list
         /// </summary>
         /// <returns></returns>
-        public ILinkedList<T> RemoveFromFront()
+        public ILinkedList<T> RemoveFirst()
         {
             if (this.Count() == 0)
                 return null;
@@ -145,7 +145,7 @@ namespace MK.DataStructures.Implementations.List
         /// Removes Last item from the list
         /// </summary>
         /// <returns></returns>
-        public ILinkedList<T> RemoveFromEnd()
+        public ILinkedList<T> RemoveLast()
         {
             var listCount = this.Count();
             if (listCount == 0)
