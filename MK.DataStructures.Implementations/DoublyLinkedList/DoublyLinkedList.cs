@@ -16,7 +16,36 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 
         public IDoublyLinkedList<T> Add(INode<T> node, int position)
         {
-            throw new NotImplementedException();
+            if (node == null)
+                throw new ArgumentNullException("Invalid Node");
+
+            if (position <= 0 || position > this.Count() + 1)
+                throw new ArgumentOutOfRangeException("Invalid Position");
+
+            var index = 1;
+            var _currentItem = Head;
+            while(index <= position)
+            {
+                if(index == position)
+                {
+                    if(_currentItem == null)
+                    {
+                        Head = Tail = node;
+                    }
+                    else
+                    {
+                        var _indexedNextItem = _currentItem.Next;
+                        node.Previous = _currentItem;
+                        node.Next = _indexedNextItem;
+                        _currentItem.Next = node;
+                    }
+                    break;
+                }
+                _currentItem = _currentItem.Next;
+                index++;
+            }
+            return this;
+
         }
 
         public IDoublyLinkedList<T> AddFirst(INode<T> node)
@@ -69,7 +98,33 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 
         public IDoublyLinkedList<T> Remove(int position)
         {
-            throw new NotImplementedException();
+            if (position <= 0 || position > this.Count())
+                throw new ArgumentOutOfRangeException("Invalid Position");
+
+            var index = 1;
+            var _currentItem = Head;
+            while (index <= position)
+            {
+                if (index == position)
+                {
+                    if (_currentItem == null)
+                    {
+                        Head = Tail = null;
+                    }
+                    else
+                    {
+                        var _indexedPreviousItem = _currentItem.Previous;
+                        var _indexedNextItem = _currentItem.Next;
+
+                        _indexedPreviousItem.Next = _indexedNextItem;
+                    }
+                    break;
+                }
+                _currentItem = _currentItem.Next;
+                index++;
+            }
+
+            return this;
         }
 
         public IDoublyLinkedList<T> RemoveFirst()

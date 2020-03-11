@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace MK.DataStructures.Windows.Client
 {
-	public partial class Main : Form
-	{
-		public Main()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class Main : Form
+    {
+        public Main()
+        {
+            InitializeComponent();
+        }
+    }
 }
