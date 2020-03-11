@@ -6,8 +6,8 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 {
     public class DoublyLinkedList<T> : IDoublyLinkedList<T>
     {
-        public INode<T> Head { get; set; }
-        public INode<T> Tail { get; set; }
+        public INode<T> Head { get; private set; }
+        public INode<T> Tail { get; private set; }
 
         public DoublyLinkedList()
         {
@@ -24,13 +24,16 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             if (node == null)
                 return this;
 
-            var _temp = Head;
-            Head = node;
-            Head.Next = _temp;
-
-            if (this.Count() == 1)
+            if(this.Any())
             {
-                Tail = Head;
+                var _currentHead = Head;
+                Head = node;
+                Head.Next = _currentHead;
+                _currentHead.Previous = Head;
+            }
+            else
+            {
+                Head = Tail = node;
             }
             return this;
         }
@@ -40,22 +43,28 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             if (node == null)
                 return this;
 
-            if (this.Count() == 0)
+            if (this.Any())
             {
-                Head = node;
+                var _currentLastNode = Tail;
                 Tail = node;
+                Tail.Previous = _currentLastNode;
+                _currentLastNode.Next = Tail;
             }
             else
             {
-                Tail.Next = node;
-                Tail = node;
+                Head = Tail = node;
             }
             return this;
         }
 
         public IEnumerable<T> Enumerate()
         {
-            throw new NotImplementedException();
+            var node = this.Head;
+            while (node != null)
+            {
+                yield return node.Data;
+                node = node.Next;
+            }
         }
 
         public IDoublyLinkedList<T> Remove(int position)
@@ -65,25 +74,38 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 
         public IDoublyLinkedList<T> RemoveFirst()
         {
-            if (this.Count() == 0)
+            if (!this.Any())
                 return null;
 
             //If list contains only one node
             if (Head.Next == null)
             {
-                Head = null;
-                Tail = null;
+                Head = Tail = null;
             }
             else
             {
                 Head = Head.Next;
+                Head.Previous = null;
             }
             return this;
         }
 
         public IDoublyLinkedList<T> RemoveLast()
         {
-            throw new NotImplementedException();
+            if (!this.Any())
+                return null;
+
+            if(Tail.Previous == null)
+            {
+                Head = Tail = null;
+            }
+            else
+            {
+                Tail.Previous.Next = null;
+                Tail = Tail.Previous;
+            }
+
+            return null;
         }
     }
 }

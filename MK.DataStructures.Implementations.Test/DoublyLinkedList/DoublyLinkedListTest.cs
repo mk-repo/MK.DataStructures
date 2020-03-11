@@ -19,7 +19,7 @@ namespace MK.DataStructures.Implementations.Test.DoublyLinkedList
         public void Assert_Count_Add_To_Front_Integer()
         {
             var doublyLinkedList = new DoublyLinkedList<int>();
-            var _node = new Node<int>() { Data = 5, Next = null };
+            var _node = new Node<int>(5);
 
             doublyLinkedList.AddFirst(_node);
 
@@ -30,7 +30,7 @@ namespace MK.DataStructures.Implementations.Test.DoublyLinkedList
         public void Assert_Data_Add_To_Front_Integer()
         {
             var doublyLinkedList = new DoublyLinkedList<int>();
-            var _node = new Node<int>() { Data = 5, Next = null };
+            var _node = new Node<int>(5);
 
             doublyLinkedList.AddFirst(_node);
 
@@ -42,7 +42,7 @@ namespace MK.DataStructures.Implementations.Test.DoublyLinkedList
         public void Assert_Count_Add_To_Front_String()
         {
             var doublyLinkedList = new DoublyLinkedList<string>();
-            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+            var _node = new Node<string>("Test_Data");
 
             doublyLinkedList.AddFirst(_node);
 
@@ -53,7 +53,7 @@ namespace MK.DataStructures.Implementations.Test.DoublyLinkedList
         public void Assert_Data_Add_To_Front_String()
         {
             var doublyLinkedList = new DoublyLinkedList<string>();
-            var _node = new Node<string>() { Data = "Test_Data", Next = null };
+            var _node = new Node<string>("Test_Data");
 
             doublyLinkedList.AddFirst(_node);
 

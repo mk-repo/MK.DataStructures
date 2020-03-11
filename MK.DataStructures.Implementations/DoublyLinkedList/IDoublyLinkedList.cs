@@ -6,9 +6,9 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 {
     public interface IDoublyLinkedList<T>
     {
-        INode<T> Head { get; set; }
+        INode<T> Head { get; }
 
-        INode<T> Tail { get; set; }
+        INode<T> Tail { get; }
 
         IDoublyLinkedList<T> AddFirst(INode<T> node);
 

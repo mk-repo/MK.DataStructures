@@ -35,5 +35,13 @@ namespace MK.DataStructures.Implementations
             }
             return count;
         }
+
+        public static bool Any<T>(this IDoublyLinkedList<T> list)
+        {
+            if (list == null)
+                return false;
+
+            return list.Head != null;
+        }
     }
 }

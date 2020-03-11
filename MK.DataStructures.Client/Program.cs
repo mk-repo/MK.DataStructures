@@ -1,4 +1,5 @@
 ﻿using MK.DataStructures.Implementations;
+using MK.DataStructures.Implementations.DoublyLinkedList;
 using MK.DataStructures.Implementations.List;
 using System;
 using System.Linq;
@@ -16,47 +17,65 @@ namespace MK.DataStructures.Client
             var _program = new Program();
             _program.PrintNodeChain(_integerNodeChain);
 
-            Console.WriteLine("Build List");
-            var _node = new Node<int>() { Data = 5, Next = null };
-            var _node1 = new Node<int>() { Data = 7, Next = null };
-            var _node2 = new Node<int>() { Data = 10, Next = null };
-            var _node3 = new Node<int>() { Data = 15, Next = null };
-            var _node4 = new Node<int>() { Data = 20, Next = null };
+            #region LinkedList
+            //Console.WriteLine("Build List");
+            //var _node = new Node<int>(5);
+            //var _node1 = new Node<int>(7);
+            //var _node2 = new Node<int>(10);
+            //var _node3 = new Node<int>(15);
+            //var _node4 = new Node<int>(20);
 
-            ILinkedList<int> _linkedList = new LinkedList<int>();
-            _program.AddFirstItemToList(_linkedList, _node);
-            _program.AddFirstItemToList(_linkedList, _node1);
-            _program.AddFirstItemToList(_linkedList, _node2);
 
-            _program.AddLastItemToList(_linkedList, _node3);
+            //var _linkedList = new LinkedList<int>();
+            //_program.AddFirstItemToList(_linkedList, _node);
+            //_program.AddFirstItemToList(_linkedList, _node1);
+            //_program.AddFirstItemToList(_linkedList, _node2);
 
-            _program.AddFirstItemToList(_linkedList, _node4);
+            //_program.AddLastItemToList(_linkedList, _node3);
 
-            _program.PrintListItems(_linkedList);
+            //_program.AddFirstItemToList(_linkedList, _node4);
 
-            Console.WriteLine("Removing First Item From List");
-            _program.RemoveFirstItemFromList(_linkedList);
+            //_program.PrintListItems(_linkedList);
 
-            _program.PrintListItems(_linkedList);
+            //Console.WriteLine("Removing First Item From List");
+            //_program.RemoveFirstItemFromList(_linkedList);
 
-            Console.WriteLine("Removing Last Item From List");
-            _program.RemoveLastItemFromList(_linkedList);
+            //_program.PrintListItems(_linkedList);
 
-            _program.PrintListItems(_linkedList);
+            //Console.WriteLine("Removing Last Item From List");
+            //_program.RemoveLastItemFromList(_linkedList);
 
-            Console.WriteLine("Removing item base on position. Position: 2");
-            _program.RemoveItemFromList(_linkedList, 2);
+            //_program.PrintListItems(_linkedList);
 
-            _program.PrintListItems(_linkedList);
+            //Console.WriteLine("Removing item base on position. Position: 2");
+            //_program.RemoveItemFromList(_linkedList, 2);
 
-            Console.WriteLine("Adding item base on position. Position: 2");
-            var _node5 = new Node<int>() { Data = 25, Next = null };
-            _program.AddItemsToList(_linkedList, _node5, 2);
+            //_program.PrintListItems(_linkedList);
 
-            _program.PrintListItems(_linkedList);
+            //Console.WriteLine("Adding item base on position. Position: 2");
+            //var _node5 = new Node<int>(25);
+            //_program.AddItemsToList(_linkedList, _node5, 2);
 
+            //_program.PrintListItems(_linkedList);
+            #endregion
+
+            #region DoublyLinkedList
+            Console.WriteLine("Build Doubly Linked List");
+            var _dllnode = new Node<int>(5);
+            var _dllnode1 = new Node<int>(10);
+            var _dllnode2 = new Node<int>(15);
+
+            var _doublyLinkedList = new DoublyLinkedList<int>();
+            _program.AddFirstItemToList(_doublyLinkedList, _dllnode);
+            _program.AddFirstItemToList(_doublyLinkedList, _dllnode1);
+            _program.AddFirstItemToList(_doublyLinkedList, _dllnode2);
+
+            _program.PrintListItems(_doublyLinkedList);
+
+            #endregion
         }
 
+        #region LinkedListOperations
         void PrintNodeChain<T>(INode<T> node)
         {
             if (node == null) return;
@@ -118,5 +137,24 @@ namespace MK.DataStructures.Client
                 Console.WriteLine(node);
             });
         }
+        #endregion
+
+        #region DoublyLinkedListOperations
+
+        void AddFirstItemToList<T>(IDoublyLinkedList<T> doublyLinkedList, INode<T> node)
+        {
+            doublyLinkedList.AddFirst(node);
+
+            Console.WriteLine("List Length :" + doublyLinkedList.Count());
+        }
+
+        void PrintListItems<T>(IDoublyLinkedList<T> doublyLinkedList)
+        {
+            doublyLinkedList.Enumerate().ToList().ForEach(node =>
+            {
+                Console.WriteLine(node);
+            });
+        }
+        #endregion
     }
 }
