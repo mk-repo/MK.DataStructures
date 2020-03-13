@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MK.DataStructures.Implementations.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,7 +21,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddFirst(INode<T> node)
+        public IBaseList<T> AddFirst(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -41,7 +42,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public ILinkedList<T> AddLast(INode<T> node)
+        public IBaseList<T> AddLast(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -65,7 +66,7 @@ namespace MK.DataStructures.Implementations.List
         /// <param name="node"></param>
         /// <param name="position"></param>
         /// <returns></returns>
-        public ILinkedList<T> Add(INode<T> node, int position)
+        public IBaseList<T> Add(INode<T> node, int position)
         {
             if (node == null) return null;
 
@@ -120,7 +121,7 @@ namespace MK.DataStructures.Implementations.List
         /// Removes first item from the list
         /// </summary>
         /// <returns></returns>
-        public ILinkedList<T> RemoveFirst()
+        public IBaseList<T> RemoveFirst()
         {
             if (this.Count() == 0)
                 return null;
@@ -142,7 +143,7 @@ namespace MK.DataStructures.Implementations.List
         /// Removes Last item from the list
         /// </summary>
         /// <returns></returns>
-        public ILinkedList<T> RemoveLast()
+        public IBaseList<T> RemoveLast()
         {
             var listCount = this.Count();
             if (listCount == 0)
@@ -160,7 +161,7 @@ namespace MK.DataStructures.Implementations.List
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        public ILinkedList<T> Remove(int position)
+        public IBaseList<T> Remove(int position)
         {
             //If invalid position is provided
             if (position < 0 || position > this.Count())

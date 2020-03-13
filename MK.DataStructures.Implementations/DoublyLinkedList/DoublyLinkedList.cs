@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MK.DataStructures.Implementations.Base;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
 
         }
 
-        public IDoublyLinkedList<T> Add(INode<T> node, int position)
+        public IBaseList<T> Add(INode<T> node, int position)
         {
             if (node == null)
                 throw new ArgumentNullException("Invalid Node");
@@ -45,10 +46,9 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
                 index++;
             }
             return this;
-
         }
 
-        public IDoublyLinkedList<T> AddFirst(INode<T> node)
+        public IBaseList<T> AddFirst(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -67,7 +67,7 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             return this;
         }
 
-        public IDoublyLinkedList<T> AddLast(INode<T> node)
+        public IBaseList<T> AddLast(INode<T> node)
         {
             if (node == null)
                 return this;
@@ -96,7 +96,7 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             }
         }
 
-        public IDoublyLinkedList<T> Remove(int position)
+        public IBaseList<T> Remove(int position)
         {
             if (position <= 0 || position > this.Count())
                 throw new ArgumentOutOfRangeException("Invalid Position");
@@ -127,7 +127,7 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             return this;
         }
 
-        public IDoublyLinkedList<T> RemoveFirst()
+        public IBaseList<T> RemoveFirst()
         {
             if (!this.Any())
                 return null;
@@ -145,7 +145,7 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             return this;
         }
 
-        public IDoublyLinkedList<T> RemoveLast()
+        public IBaseList<T> RemoveLast()
         {
             if (!this.Any())
                 return null;
@@ -161,6 +161,15 @@ namespace MK.DataStructures.Implementations.DoublyLinkedList
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Clears Doubly Linked List
+        /// </summary>
+        public void Clear()
+        {
+            this.Head = null;
+            this.Tail = null;
         }
     }
 }
