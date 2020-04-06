@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MK.DataStructures.Implementations.DoublyLinkedList;
 
-namespace MK.DataStructures.Implementations.Test.DoublyLinkedList
+namespace MK.DataStructures.Implementations.Test
 {
     [TestClass]
     public class DoublyLinkedListTest
