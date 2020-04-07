@@ -1,24 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MK.DataStructures.Implementations.Stack
 {
+	/// <summary>
+	/// Stack implementation (LIFO)
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
 	public class Stack<T> : IStack<T>
 	{
+		private List.ILinkedList<T> list = new List.LinkedList<T>();
+
 		public void Clear()
 		{
-			throw new NotImplementedException();
+			this.list = null;
 		}
 
 		public IStack<T> Pop()
 		{
-			throw new NotImplementedException();
+			if (!this.list.Any())
+				throw new Exception("Stack is empty.");
+
+			this.list.RemoveFirst();
+			return this;
 		}
 
 		public IStack<T> Push(INode<T> node)
 		{
-			throw new NotImplementedException();
+			if (node == null) throw new ArgumentNullException();
+			
+			this.list.AddFirst(node);
+			return this;
 		}
 	}
 }
